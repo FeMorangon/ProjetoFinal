@@ -21,3 +21,15 @@ public:
     int vitoriasJogoVelha = 0;
     int derrotasJogoVelha = 0;
 };
+
+// Classe para gerenciar as partidas
+class Partida {
+private:
+    std::map<std::string, Jogador> jogadores;
+
+public:
+    std::string registrarNomeJogador();
+    std::string registrarApelidoJogador();
+
+    void cadastrarJogador(const std::string& nome, const std::string& apelido);
+};
