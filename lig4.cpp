@@ -77,6 +77,14 @@ bool Lig4::verificarDiagonal(char jogador) {
             }
         }
     }
-
     return false; // Nenhuma sequência diagonal foi encontrada
+}
+    // Verificando a possibilidade do empate no jogo
+    bool Lig4::verificarEmpate() {
+    for (int coluna = 0; coluna < colunas; ++coluna) {
+        if (encontrarLinhaLivre(coluna) != -1) {
+            return false; // Há colunas com espaços vazios, então o jogo ainda não acabou
+        }
+    }
+    return true; // Todas as colunas estão cheias
 }
