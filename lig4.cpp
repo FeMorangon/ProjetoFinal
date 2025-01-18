@@ -39,3 +39,17 @@ bool Lig4::verificarVertical(char jogador) {
     }
     return false;
 }
+
+bool Lig4::verificarHorizontal(char jogador) {
+    for (int linha = 0; linha < linhas; ++linha) {
+        for (int coluna = 0; coluna <= colunas - 4; ++coluna) {
+            if (tabuleiro[linha][coluna] == jogador &&
+                tabuleiro[linha][coluna + 1] == jogador &&
+                tabuleiro[linha][coluna + 2] == jogador &&
+                tabuleiro[linha][coluna + 3] == jogador) {
+                return true;
+            }
+        }
+    }
+    return false;
+}
