@@ -24,3 +24,18 @@ bool Lig4::fazerJogada(int coluna, char jogador) {
     }
     return false; // Jogada inválida
 }
+
+// As funções a seguir verificam a possibilidade de vitória do jogador
+bool Lig4::verificarVertical(char jogador) {
+    for (int coluna = 0; coluna < colunas; ++coluna) {
+        for (int linha = 0; linha <= linhas - 4; ++linha) {
+            if (tabuleiro[linha][coluna] == jogador &&
+            tabuleiro[linha + 1][coluna] == jogador && 
+            tabuleiro[linha + 2][coluna] == jogador && 
+            tabuleiro[linha + 3][coluna] == jogador) {
+                return true;
+            }
+        }
+    }
+    return false;
+}
