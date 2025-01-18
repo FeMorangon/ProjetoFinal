@@ -94,3 +94,23 @@ bool Lig4::verificarVitoria(char jogador) {
     return verificarVertical(jogador) || verificarHorizontal(jogador) || verificarDiagonal(jogador && !verificarEmpate());
 
 }
+
+// Impressão do tabuleiro do jogo
+void Lig4::imprimirTabuleiro() {
+    // Indica os números das colunas antes de imprimir o tabuleiro, para ajudar na visualização das colunas
+    std::cout << "  ";
+    for (int coluna = 0; coluna < colunas; ++coluna) {
+        std::cout << coluna + 1 << "   ";
+    }
+    std::cout << std::endl;
+
+    // Imprime o tabuleiro
+    for (int linha = 0; linha < linhas; ++linha) {
+        std::cout << "| ";
+        for (int coluna = 0; coluna < colunas; ++coluna) {
+            std::cout << tabuleiro[linha][coluna] << " | ";
+        }
+        std::cout << std::endl;
+    }
+    std::cout << std::endl;
+}
