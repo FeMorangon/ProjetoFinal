@@ -37,7 +37,7 @@ bool Lig4::verificarVertical(char jogador) {
             }
         }
     }
-    return false;
+    return false; // Nenhuma sequência vertical foi encontrada
 }
 
 bool Lig4::verificarHorizontal(char jogador) {
@@ -51,5 +51,32 @@ bool Lig4::verificarHorizontal(char jogador) {
             }
         }
     }
-    return false;
+    return false; // Nenhuma sequência horizontal foi encontrada
+}
+bool Lig4::verificarDiagonal(char jogador) {
+    // Aqui, verifica as diagonais existentes para baixo e para a direita
+    for (int linha = 0; linha <= linhas - 4; ++linha) {
+        for (int coluna = 0; coluna <= colunas - 4; ++coluna) {
+            if (tabuleiro[linha][coluna] == jogador &&
+                tabuleiro[linha + 1][coluna + 1] == jogador &&
+                tabuleiro[linha + 2][coluna + 2] == jogador &&
+                tabuleiro[linha + 3][coluna + 3] == jogador) {
+                return true;
+            }
+        }
+    }
+
+    // Aqui, verifica as diagonais existentes para cima e para a direita
+    for (int linha = 3; linha < linhas; ++linha) {
+        for (int coluna = 0; coluna <= colunas - 4; ++coluna) {
+            if (tabuleiro[linha][coluna] == jogador &&
+                tabuleiro[linha - 1][coluna + 1] == jogador &&
+                tabuleiro[linha - 2][coluna + 2] == jogador &&
+                tabuleiro[linha - 3][coluna + 3] == jogador) {
+                return true;
+            }
+        }
+    }
+
+    return false; // Nenhuma sequência diagonal foi encontrada
 }
