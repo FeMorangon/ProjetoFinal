@@ -88,3 +88,9 @@ bool Lig4::verificarDiagonal(char jogador) {
     }
     return true; // Todas as colunas estão cheias
 }
+
+// Condições de vitória no jogo
+bool Lig4::verificarVitoria(char jogador) {
+    return verificarVertical(jogador) || verificarHorizontal(jogador) || verificarDiagonal(jogador && !verificarEmpate());
+
+}
