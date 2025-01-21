@@ -1,6 +1,6 @@
 #include "./velha.hpp"
 #include "./reversi.hpp"
-#include "./connectfour.hpp"
+#include "./lig4.hpp"
 #include "./cadastros.hpp"
 
 string jogador1, jogador2;
