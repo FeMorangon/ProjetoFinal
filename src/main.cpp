@@ -35,13 +35,13 @@ int EscolherOponente(){
     system("cls");
 
     cout << "================================= BEM VINDO =================================" << "\n\n";
-    cout << "Seja bem vindo! Antes de come�ar, voc� gostaria de jogar contra:" << "\n\n";
+    cout << "Seja bem vindo! Antes de comecar, voce gostaria de jogar contra:" << "\n\n";
     cout << "1 - Um Amigo\n2 - Computador\n\n";
     cout << "Escolha: ";
 
     do{
         cin >> escolha_de_oponente;
-        if(escolha_de_oponente > 2 || escolha_de_oponente < 1) cout << "Erro: op��o inv�lida. Escolha novamente: ";
+        if(escolha_de_oponente > 2 || escolha_de_oponente < 1) cout << "Erro: opcao invalida. Escolha novamente: ";
     } while(escolha_de_oponente > 2 || escolha_de_oponente < 1);
 
     return 3;
@@ -62,17 +62,17 @@ int EscolherNome(){
 
             cout << "\n" << "=============================================================================" << "\n\n";
 
-            if(escolha_de_oponente == 2) cout << "Jogador, escolha entre as op��es!\n\n";
+            if(escolha_de_oponente == 2) cout << "Jogador, escolha entre as opcoes!\n\n";
 
             else{
-                (i == 1) ? cout << "Jogador 1, � a sua vez de escolher!\n\n" : cout << "Jogador 2, � a sua vez de escolher!\n\n";
+                (i == 1) ? cout << "Jogador 1, eh a sua vez de escolher!\n\n" : cout << "Jogador 2, eh a sua vez de escolher!\n\n";
             } 
     
-            cout << "1 - Sair\n2 - Voltar\n\n3 - Inserir Novo Usu�rio\n4 - Remover Usu�rio\n5 - Jogar Sem Nome\n6 - Escolher Usu�rio\n\nEscolha: ";
+            cout << "1 - Sair\n2 - Voltar\n\n3 - Inserir Novo Usuario\n4 - Remover Usuario\n5 - Jogar Sem Nome\n6 - Escolher Usuario\n\nEscolha: ";
 
             do{
                 cin >> escolher_nome;
-                if(escolher_nome > 6 || escolher_nome < 1) cout << "Erro: op��o inv�lida. Escolha novamente: ";
+                if(escolher_nome > 6 || escolher_nome < 1) cout << "Erro: opcao invalida. Escolha novamente: ";
             } while(escolher_nome > 6 || escolher_nome < 1);
 
             if(escolher_nome == 4) Cadastrar::RemoverJogador();
@@ -119,13 +119,13 @@ int EscolherJogo() {
         system("cls");
 
         cout << "================================ BEM VINDO ================================\n\n";
-        cout << "Escolha uma op��o:\n";
-        cout << "\n1 - Sair\n2 - Voltar\n\n3 - Jogo da Velha\n4 - Reversi\n5 - Lig4\n\nEscolha Sua Op��o: ";
+        cout << "Escolha uma opcao:\n";
+        cout << "\n1 - Sair\n2 - Voltar\n\n3 - Jogo da Velha\n4 - Reversi\n5 - Lig4\n\nEscolha Sua Opcao: ";
 
         do {
             cin >> escolha_do_jogo;
 
-            if (escolha_do_jogo > 5 || escolha_do_jogo < 1) cout << "Op��o inv�lida, tente novamente: ";
+            if (escolha_do_jogo > 5 || escolha_do_jogo < 1) cout << "Opcao invalida, tente novamente: ";
 
         } while (escolha_do_jogo > 5 || escolha_do_jogo < 1);
 
@@ -158,7 +158,7 @@ int EscolherJogo() {
                 break;
 
             default:
-                cout << "Op��o inv�lida, tente novamente.\n";
+                cout << "Opcao invalida, tente novamente.\n";
                 break;
         }
     }
@@ -167,12 +167,11 @@ int EscolherJogo() {
 }
 
 int main(){
-
     Cadastrar usuarios;
 
     //=======================================================================================//
 
-    //Para o compilador aceitar acentos do portugu�s
+    //Para o compilador aceitar acentos do português
     SetConsoleCP(1252);
     SetConsoleOutputCP(1252);
 
