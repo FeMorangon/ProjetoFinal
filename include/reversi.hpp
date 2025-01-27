@@ -4,11 +4,8 @@
 #include "./jogos.hpp"
 
 class Reversi: public Jogos{
-
-    public:
-
+public:
     Reversi(): Jogos(8, 8, 3, 9){
-
         tabuleiro[3][3] = 1;
         tabuleiro[3][4] = 2;
         tabuleiro[4][3] = 2;
@@ -27,12 +24,13 @@ class Reversi: public Jogos{
         int adversario = (jogador == 1) ? 2 : 1;
         int captura = 0;
 
-        if (c1 > 7 || c1 < 0 || c2 > 7 || c2 < 0) return 1; //colocou pe�a fora do tabuleiro
-        if (tabuleiro[c1][c2] != 0) return 2; //colocou em casa ocupada
+        if (c1 > 7 || c1 < 0 || c2 > 7 || c2 < 0) return 1; // A  peça foi colocada fora do tabuleiro
+        if (tabuleiro[c1][c2] != 0) return 2; // A  peça foi colocada em casa ocupada
 
         for (int j = -1; j <= 1; j++) {
             for (int k = -1; k <= 1; k++) {
                 if (j == 0 && k == 0) continue;
+                
                 int na = c1 + j, nb = c2 + k;
 
                 if (na >= 0 && na < 8 && nb >= 0 && nb < 8 && tabuleiro[na][nb] == adversario) {
