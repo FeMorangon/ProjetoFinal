@@ -48,7 +48,7 @@ class Jogos{
 
     void imprimir(int linhas, int colunas, int altura, int largura);
 
-    int rodada(int NUMmax_partidas, string nome1, string nome2, string nome_do_jogo, int linhas, int colunas, int altura, int largura, int contra_computador);
+    virtual int rodada(int NUMmax_partidas, string nome1, string nome2, string nome_do_jogo, int linhas, int colunas, int altura, int largura, int contra_computador);
 
     int iniciarJogo(string nome1, string nome2, int contra_computador);
 };
