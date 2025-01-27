@@ -86,13 +86,13 @@ public:
 
     int rodada(int NUMmax_partidas, string nome1, string nome2, string nome_do_jogo, int linhas, int colunas, int altura, int largura, int contra_computador) override {
 
-    int coordenada_x = 0, coordenada_y = 0;
-    int vencedor = 0;
-    mt19937 gerador(static_cast<unsigned int>(time(0)));
+        int coordenada_x = 0, coordenada_y = 0;
+        int vencedor = 0;
+        mt19937 gerador(static_cast<unsigned int>(time(0)));
 
-    int centralizar_palavra = ((largura*colunas) + colunas + 1 - 2); // Subtrair tamanho da palavra
+        int centralizar_palavra = ((largura*colunas) + colunas + 1 - 2); // Subtrair tamanho da palavra
 
-    for(int rodada=1; rodada <= NUMmax_partidas; rodada++){
+        for(int rodada=1; rodada <= NUMmax_partidas; rodada++){
             for(int jogador=1; jogador <= 2; jogador++){
 
                 coordenada_x = linhas - 1;
@@ -101,7 +101,7 @@ public:
 
                 system("cls");
 
-                //Imprimir nome do jogo
+                // Imprimir nome do jogo
                 for(int i=1; i <= centralizar_palavra - nome_do_jogo.size(); i++){
                     (i == 1)? cout << "  =" : cout << "=";
                     if(i == (centralizar_palavra - nome_do_jogo.size())/2) cout << " " << nome_do_jogo << " ";
@@ -109,103 +109,94 @@ public:
 
                 cout << "\n\n";
 
-                //Imprimir qual rodada  �
+                // Imprimir em que rodada  está
                 for(int i=1; i <= centralizar_palavra - string("RODADA X").size(); i++){
                     (i == 1)? cout << "   " : cout << " ";
                     if(i == (centralizar_palavra - string("RODADA X").size())/2) cout << " RODADA " << rodada << "\n";
                 }
 
-                //Imprimir tabuleiro
+                // Imprimir tabuleiro
                 imprimir(linhas, colunas, altura_celula, largura_celula);
 
                 SetConsoleCP(1252);
                 SetConsoleOutputCP(1252);
 
-                //Vendo se vai ou n�o terminar o jogo
+                // Vendo se vai ou não terminar o jogo
                 vencedor = analisar_vitoria(linhas, colunas, jogador);
 
                 if(vencedor != 0){
-
                     cout << endl;
 
                     switch(vencedor){
                     case 1:
-                            for(int j = 1; j <= (centralizar_palavra - (string("Vitória De ").size() + nome1.size()))/2; j++){
-                                cout << " ";
-                            }
-                            cout << "Vitória De " << nome1 << "!!!\n\n";
-                            system("pause");
-                            return 1;
-                    break;
-
+                        for(int j = 1; j <= (centralizar_palavra - (string("Vitoria de ").size() + nome1.size()))/2; j++){
+                            cout << " ";
+                        }
+                        cout << "Vitoria de " << nome1 << "!!!\n\n";
+                        system("pause");
+                        return 1;
+                        break;
                     case 2:
-                            for(int j = 1; j <= (centralizar_palavra - (string("Vitória De ").size() + nome2.size()))/2; j++){
-                                cout << " ";
-                            }
-                            cout << "Vitória De " << nome2 << "!!!\n\n";
-                            system("pause");
+                        for(int j = 1; j <= (centralizar_palavra - (string("Vitória De ").size() + nome2.size()))/2; j++){
+                            cout << " ";
+                        }
+                        cout << "Vitoria de " << nome2 << "!!!\n\n";
+                        system("pause");
 
-                            if(contra_computador == 1) return 2;
-                            else return 4;
-                    break;
-
+                        if(contra_computador == 1) return 2;
+                        else return 4;
+                        break;
                     case 3:
-                            for(int j = 1; j <= (centralizar_palavra - (string("Empate!!!").size()))/2; j++){
-                                cout << " ";
-                            }
-                            cout << "Empate" << "!!!\n\n";
-                            system("pause");
-                            return 3;
-                    break;
+                        for(int j = 1; j <= (centralizar_palavra - (string("Empate!!!").size()))/2; j++){
+                            cout << " ";
+                        }
+                        cout << "Empate" << "!!!\n\n";
+                        system("pause");
+                        return 3;
+                        break;
                     }
-
-
-
                 }
 
-                //Vez de fulano
+                // Vez de jogador tal
                 cout << "\nVez de ";
 
-                //Jogada do computador - se for jogador x computador
+                // Jogada do computador - se for o jogador x computador
                 if(contra_computador == 2 && jogador == 2){
 
                     cout << "Computador: ";
 
                     while(avaliar_jogada == -1 || avaliar_jogada == -2){
 
-                        uniform_int_distribution<> y(0, colunas-1); // n�mero aleat�rio para as colunas
+                        uniform_int_distribution<> y(0, colunas-1); // Número aleatário para as colunas
                         coordenada_y = y(gerador);
 
                         avaliar_jogada = jogada_valida(coordenada_x, coordenada_y, jogador);
                     }
-                        cout << coordenada_x + 1 << " " << coordenada_y + 1 << "\n\n";
+                        cout << coordenada_y + 1 << "\n\n";
 
                         system("pause");
                 }
 
-                //Jogada pessoa
+                // Jogada de pessoa
                 else{
-
                     (jogador == 1)? cout << nome1 << ": " : cout << nome2 << ": ";
 
                     while(avaliar_jogada == -1 || avaliar_jogada == -2){
-                    cin >> coordenada_y;
-                
-                    coordenada_y -= 1;
+                        cin >> coordenada_y;
                     
-                    avaliar_jogada = jogada_valida(coordenada_x, coordenada_y, jogador);
+                        coordenada_y -= 1;
+                        
+                        avaliar_jogada = jogada_valida(coordenada_x, coordenada_y, jogador);
 
-                    if(avaliar_jogada == -1) cout << "ERRO: casa inexistente. Tente novamente: ";
-                    if(avaliar_jogada == -2) cout << "ERRO: coluna ocupada. Tente novamente: ";
+                        if(avaliar_jogada == -1) cout << "ERRO: casa inexistente. Tente novamente: ";
+                        if(avaliar_jogada == -2) cout << "ERRO: coluna ocupada. Tente novamente: ";
                     }
                 }
 
                 tabuleiro[avaliar_jogada][coordenada_y] = jogador;
             }
         }
-        
     }
-
 };
  
 #endif
