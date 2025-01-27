@@ -24,6 +24,6 @@ const int voltar = 2;
 const int contra_pessoa = 1;
 const int contra_computador = 2;
 
-string opcao_invalida = "ERRO: op��o inv�lida. Escolha novamente: ";
+string opcao_invalida = "ERRO: opcao invalida. Escolha novamente: ";
 
 #endif
