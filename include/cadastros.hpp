@@ -4,29 +4,25 @@
 #include "cabecalhos.hpp"
 
 struct Cadastro{
+    string nome = "";
+    int pontos[4] = {0, 0, 0, 0};
 
-        string nome = "";
-        int pontos[4] = {0, 0, 0, 0};
-
-        /*
-        vetor[0] = total de pontos
-        vetor[1] = pontos jogo da velha
-        vetor[2] = pontos reversi
-        vetor[3] = pontos lig4
-        */
-
-    };
+    /*
+    Significados:
+    vetor[0] = total de pontos
+    vetor[1] = pontos jogo da velha
+    vetor[2] = pontos reversi
+    vetor[3] = pontos lig4
+    */
+};
 
 vector<Cadastro> guardar_cadastros;
 
 class Cadastrar{
-
-    public:
-
+public:
     
-    //Colocar os dados do arquivo em um vetor assim que o sistema atualizar
+    //Coloca os dados do arquivo em um vetor assim que o sistema atualizar
     Cadastrar(){
-
         string linha;
 
         stringstream dividir_linha;
@@ -36,7 +32,6 @@ class Cadastrar{
         Cadastro jogador;
 
         if(arquivo.is_open()){
-
             while( getline(arquivo, linha)){
 
             dividir_linha.str(linha);
@@ -46,7 +41,7 @@ class Cadastrar{
             guardar_cadastros.push_back(jogador);
 
             dividir_linha.clear();  // Limpa os flags de erro
-            dividir_linha.str("");  // Limpa o conte�do do buffer
+            dividir_linha.str("");  // Limpa o conteúdo do buffer
             }
         }
         arquivo.close();
@@ -84,7 +79,6 @@ class Cadastrar{
         ofstream arquivo("./cadastros.txt", ios::out);
 
         for(int i=0; i < guardar_cadastros.size(); i++){
-
             guardar_cadastros[i].pontos[0]  = guardar_cadastros[i].pontos[1] + guardar_cadastros[i].pontos[2] + guardar_cadastros[i].pontos[3];
 
             arquivo << guardar_cadastros[i].nome << " ";
@@ -101,15 +95,14 @@ class Cadastrar{
 
         Cadastro jogador;
         
-        ofstream arquivo("./cadastros.txt", ios::app);     // usando ios::app (append) para acrescentar uma nova linha no arquivo, e n�o sobrescrever
+        ofstream arquivo("./cadastros.txt", ios::app);     // Usando ios::app (append) para acrescentar uma nova linha no arquivo, e não sobrescrever
 
         if(arquivo.is_open()){
-
             cout << "Insira seu nome: ";
 
             do{
                 cin >> jogador.nome;
-                if(jogador.nome.size() > 20) cout << "ERRO: tamanho m�ximo de 20 caracteres: " ;
+                if(jogador.nome.size() > 20) cout << "ERRO: tamanho maximo de 20 caracteres: " ;
             } while(jogador.nome.size() > 20);
 
             if (jogador.nome.find(' ') != string::npos) {
@@ -127,9 +120,9 @@ class Cadastrar{
 
             arquivo.close();
 
-            cout << "\nUsu�rio criado com sucesso\n\n";
+            cout << "\nUsuario criado com sucesso\n\n";
         }
-        else cout << "N�o foi poss�vel abrir o arquivo";
+        else cout << "Nao foi possivel abrir o arquivo";
 
         guardar_cadastros.clear();
 
@@ -142,9 +135,9 @@ class Cadastrar{
 
         system("cls");
 
-        string titulos[4] = {"pontua��o total", "jogo da velha", "reversi", "lig 4"};
+        string titulos[4] = {"pontuacao total", "jogo da velha", "reversi", "lig 4"};
 
-        cout << "============================= LISTA DE USU�RIOS =============================" << endl;
+        cout << "============================= LISTA DE USUARIOS =============================" << endl;
 
         cout << "indice. nome            |";
 
@@ -155,7 +148,6 @@ class Cadastrar{
         cout << "\n=============================================================================\n\n";
 
         for(int i=0; i < guardar_cadastros.size(); i++){
-
             cout << i+1 << ". " << guardar_cadastros[i].nome;
 
             for(int j=1; j <= 21 - guardar_cadastros[i].nome.size(); j++){
@@ -165,7 +157,6 @@ class Cadastrar{
             cout << "|";
 
             for(int j = 0; j < 4; j ++){
-
                 int num_de_digitos = floor(log10(abs(guardar_cadastros[i].pontos[j])) + 1);
 
                 int centralizar_pontos;
@@ -186,7 +177,7 @@ class Cadastrar{
         
         int remover = -1;
 
-        cout << "\nInsira o �ndice do usu�rio a ser removido: ";
+        cout << "\nInsira o indice do usuario a ser removido: ";
         cin >> remover;
 
         remover  -= 1;
@@ -206,7 +197,7 @@ class Cadastrar{
             arquivo << guardar_cadastros[i].pontos[3] << endl;
         }
 
-        cout << "Usu�rio removido com sucesso!";
+        cout << "Usuario removido com sucesso!";
 
         arquivo.close();
     }
@@ -215,7 +206,7 @@ class Cadastrar{
 
         int indice;
         
-        cout << "Insira o �ndice do usu�rio escolhido: ";
+        cout << "Insira o indice do usuario escolhido: ";
         cin >> indice;
 
         return guardar_cadastros[indice-1].nome;
