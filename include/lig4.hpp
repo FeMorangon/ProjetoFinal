@@ -4,9 +4,7 @@
 #include "./jogos.hpp"
 
 class ConnectFour: public Jogos{
-
-    public:
-
+public:
     ConnectFour(): Jogos(6, 7, 3, 9){
         num_max_partidas = 42;
         nome_do_jogo = "CONNECT FOUR";
@@ -14,8 +12,7 @@ class ConnectFour: public Jogos{
     };
 
     int jogada_valida(int c1, int c2, int jogador) override {
-
-        if(c2 > 6 || c2 < 0) return -1; //casa inexistente
+        if(c2 > 6 || c2 < 0) return -1; // Casa Inválida
 
         int coordenada_x = -1;
 
@@ -27,17 +24,13 @@ class ConnectFour: public Jogos{
             } else continue;
         }
 
-        if(coordenada_x == -1) return -2;
-        
-        //else if(tabuleiro[c1][c2] != 0) return 2;
-        
+        if(coordenada_x == -1) return -2;        
         else return 0;
     }
 
     int analisar_vitoria(int c1, int c2, int jogador) override {
-
         for(int i=1; i <= 2; i++){
-
+            // Verifica se há quatro peças iguais seguidas na vertical
             for (int coluna = 0; coluna < colunas; ++coluna) {
                 for (int linha = 0; linha <= linhas - 4; ++linha) {
                     if (tabuleiro[linha][coluna] == i &&
@@ -47,6 +40,7 @@ class ConnectFour: public Jogos{
                     }
             }
 
+            // Verifica se há quatro peças iguais seguidas na horizontal
             for (int linha = 0; linha < linhas; ++linha) {
                 for (int coluna = 0; coluna <= colunas - 4; ++coluna) {
                     if (tabuleiro[linha][coluna] == i &&
@@ -56,7 +50,7 @@ class ConnectFour: public Jogos{
                 }
             }
 
-            // Aqui, verifica as diagonais existentes para baixo e para a direita
+            // Verifica se há quatro peças iguais seguidas nas diagonais existentes para baixo e para a direita
             for (int linha = 0; linha <= linhas - 4; ++linha) {
                 for (int coluna = 0; coluna <= colunas - 4; ++coluna) {
                     if (tabuleiro[linha][coluna] == i &&
@@ -65,7 +59,7 @@ class ConnectFour: public Jogos{
                         tabuleiro[linha + 3][coluna + 3] == i) return i;
                 }
             }
-
+            // Verifica se há quatro peças iguais seguidas nas diagonais existentes para cima e para a direita
             for (int linha = 3; linha < linhas; ++linha) {
                 for (int coluna = 0; coluna <= colunas - 4; ++coluna) {
                     if (tabuleiro[linha][coluna] == i &&
@@ -76,8 +70,7 @@ class ConnectFour: public Jogos{
             }
         }
 
-        //Ver se o tabuleiro est� cheio
-
+        // Verificar se o tabuleiro está cheio
         int tabuleiro_vazio = 0;
         
         for(int j=0; j < colunas; j++){
@@ -97,7 +90,7 @@ class ConnectFour: public Jogos{
     int vencedor = 0;
     mt19937 gerador(static_cast<unsigned int>(time(0)));
 
-    int centralizar_palavra = ((largura*colunas) + colunas + 1 - 2); //subtrair tamanho da palavra
+    int centralizar_palavra = ((largura*colunas) + colunas + 1 - 2); // Subtrair tamanho da palavra
 
     for(int rodada=1; rodada <= NUMmax_partidas; rodada++){
             for(int jogador=1; jogador <= 2; jogador++){
