@@ -4,9 +4,7 @@
 #include "./jogos.hpp"
 
 class Velha: public Jogos{
-
-    public:
-
+public:
     Velha(): Jogos(3, 3, 6, 18){
         num_max_partidas = 9;
         nome_do_jogo = "JOGO DA VELHA";
@@ -24,7 +22,7 @@ class Velha: public Jogos{
 
     int analisar_vitoria(int c1, int c2, int jogador) override{
 
-        //Ver se o tabuleiro est� cheio
+        // Ver se o tabuleiro está cheio
         
         int tabuleiro_vazio = 0;
 
@@ -36,7 +34,7 @@ class Velha: public Jogos{
 
         if(tabuleiro_vazio == 0) return 3;
 
-        //percorrer diagonais
+        // Percorrer diagonais
         /*for(int i=0; i < linhas; i++){
             for(int j=0; j < colunas; j++){
                 if(tabuleiro[i+1][j+1])
@@ -44,17 +42,15 @@ class Velha: public Jogos{
         }*/
 
        for(int i=1; i <= 2 ; i++){
-
-        if ((tabuleiro[0][0] == i && tabuleiro[0][1] == i && tabuleiro[0][2] == i) ||
-            (tabuleiro[1][0] == i && tabuleiro[1][1] == i && tabuleiro[1][2] == i) ||
-            (tabuleiro[2][0] == i && tabuleiro[2][1] == i && tabuleiro[2][2] == i) ||
-            (tabuleiro[0][0] == i && tabuleiro[1][0] == i && tabuleiro[2][0] == i) ||
-            (tabuleiro[0][1] == i && tabuleiro[1][1] == i && tabuleiro[2][1] == i) ||
-            (tabuleiro[0][2] == i && tabuleiro[1][2] == i && tabuleiro[2][2] == i) ||
-            (tabuleiro[0][0] == i && tabuleiro[1][1] == i && tabuleiro[2][2] == i) ||
-            (tabuleiro[0][2] == i && tabuleiro[1][1] == i && tabuleiro[2][0] == i) ) return i;
-
-       }
+            if ((tabuleiro[0][0] == i && tabuleiro[0][1] == i && tabuleiro[0][2] == i) ||
+                (tabuleiro[1][0] == i && tabuleiro[1][1] == i && tabuleiro[1][2] == i) ||
+                (tabuleiro[2][0] == i && tabuleiro[2][1] == i && tabuleiro[2][2] == i) ||
+                (tabuleiro[0][0] == i && tabuleiro[1][0] == i && tabuleiro[2][0] == i) ||
+                (tabuleiro[0][1] == i && tabuleiro[1][1] == i && tabuleiro[2][1] == i) ||
+                (tabuleiro[0][2] == i && tabuleiro[1][2] == i && tabuleiro[2][2] == i) ||
+                (tabuleiro[0][0] == i && tabuleiro[1][1] == i && tabuleiro[2][2] == i) ||
+                (tabuleiro[0][2] == i && tabuleiro[1][1] == i && tabuleiro[2][0] == i) ) return i;
+        }
         return 0;
     }
 };
