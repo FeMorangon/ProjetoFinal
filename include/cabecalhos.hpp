@@ -11,6 +11,8 @@
 #include <sstream>
 #include <cmath>
 #include <ctime>
+#include <locale.h>
+
 using namespace std;
 
 const int velha = 3;
