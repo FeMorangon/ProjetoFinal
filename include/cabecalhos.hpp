@@ -15,6 +15,7 @@
 
 using namespace std;
 
+// Numeração para guiar o usuário no menu dos jogos
 const int velha = 3;
 const int reversi = 4;
 const int connect4 = 5;
